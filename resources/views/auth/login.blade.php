@@ -37,7 +37,9 @@
                     <label class="label pb-1">
                         <span class="text-[0.82rem] font-semibold text-gray-700">
                             Email
-                        </span>
+                        </span><p class="text-[0.82rem] font-semibold text-gray-700 mb-1">
+    Email
+</p>
                     </label>
 
                     <label class="input input-bordered flex items-center gap-3 rounded-[10px] border-slate-200 bg-slate-50">
