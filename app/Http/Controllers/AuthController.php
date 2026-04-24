@@ -22,8 +22,8 @@ class AuthController extends Controller
             $user = Auth::user();
             if ($user->role == 'admin') {
                 return redirect()->route('admin.dashboard');
-            } elseif ($user->role == 'doctor') {
-                return redirect()->route('doctor.dashboard');
+            } elseif ($user->role == 'dokter') { // ← diubah dari 'doctor' ke 'dokter'
+                return redirect()->route('dokter.dashboard');
             } else {
                 return redirect()->route('pasien.dashboard');
             }
@@ -48,15 +48,21 @@ class AuthController extends Controller
             'password' => ['required', 'string'],
         ]);
 
-        if(User::where('no_ktp', $request->no_ktp)->exists()) {
+        if (User::where('no_ktp', $request->no_ktp)->exists()) {
             return back()->withErrors(['no_ktp' => 'Nomor Ktp Sudah Terdaftar']);
         }
+
+        // Generate no_rm otomatis dengan format YYYYMM-XXX
+        $lastUser = User::latest('id')->first();
+        $lastId = $lastUser ? $lastUser->id + 1 : 1;
+        $no_rm = date('Ym') . '-' . str_pad($lastId, 3, '0', STR_PAD_LEFT);
 
         User::create([
             'name'     => $request->name,
             'alamat'   => $request->alamat,
             'no_ktp'   => $request->no_ktp,
             'no_hp'    => $request->no_hp,
+            'no_rm'    => $no_rm,
             'email'    => $request->email,
             'password' => Hash::make($request->password),
             'role'     => 'pasien',
