@@ -5,7 +5,7 @@
 
             {{-- Logo & Title --}}
             <div class="text-center mb-8">
-                <img src="{{ asset('images/logo-bengkot.png') }}"
+                <img src="{{ asset('images/bengkelkoding.png') }}"
                     class="w-[60px] h-[60px] rounded-[16px] object-cover mx-auto mb-[14px] block">
 
                 <h1 class="text-[1.5rem] font-extrabold text-[#1e2d6b] m-0 mb-[6px]">
@@ -37,9 +37,7 @@
                     <label class="label pb-1">
                         <span class="text-[0.82rem] font-semibold text-gray-700">
                             Email
-                        </span><p class="text-[0.82rem] font-semibold text-gray-700 mb-1">
-    Email
-</p>
+                        </span>
                     </label>
 
                     <label class="input input-bordered flex items-center gap-3 rounded-[10px] border-slate-200 bg-slate-50">

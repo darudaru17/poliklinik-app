@@ -36,6 +36,8 @@ Route::middleware(['auth', 'role:admin'])->prefix('admin')->group(function () {
     Route::resource('dokter', DokterController::class);
     Route::resource('pasien', PasienController::class);
     Route::resource('obat', ObatController::class);
+    Route::post('/obat/{id}/tambah-stok', [ObatController::class, 'tambahStok'])->name('obat.tambah-stok');
+    Route::post('/obat/{id}/kurangi-stok', [ObatController::class, 'kurangiStok'])->name('obat.kurangi-stok');
 });
 
 Route::middleware(['auth', 'role:dokter'])->prefix('dokter')->group(function () {
